@@ -10,12 +10,14 @@ use Picqer\Financials\Moneybird\Entities\FinancialAccount;
 use Picqer\Financials\Moneybird\Entities\FinancialMutation;
 use Picqer\Financials\Moneybird\Entities\GeneralDocument;
 use Picqer\Financials\Moneybird\Entities\GeneralJournalDocument;
+use Picqer\Financials\Moneybird\Entities\GeneralJournalDocumentEntry;
 use Picqer\Financials\Moneybird\Entities\Identity;
 use Picqer\Financials\Moneybird\Entities\ImportMapping;
 use Picqer\Financials\Moneybird\Entities\LedgerAccount;
 use Picqer\Financials\Moneybird\Entities\Product;
 use Picqer\Financials\Moneybird\Entities\PurchaseInvoice;
 use Picqer\Financials\Moneybird\Entities\PurchaseInvoiceDetail;
+use Picqer\Financials\Moneybird\Entities\PurchaseInvoicePayment;
 use Picqer\Financials\Moneybird\Entities\Receipt;
 use Picqer\Financials\Moneybird\Entities\RecurringSalesInvoice;
 use Picqer\Financials\Moneybird\Entities\Note;
@@ -153,6 +155,15 @@ class Moneybird
     }
 
     /**
+     * @param array $attributes
+     * @return GeneralJournalDocumentEntry
+     */
+    public function generalJournalDocumentEntry($attributes = [])
+    {
+        return new GeneralJournalDocumentEntry($this->connection, $attributes);
+    }
+
+    /**
      * @return Connection
      */
     public function getConnection()
@@ -212,6 +223,15 @@ class Moneybird
     public function purchaseInvoiceDetail($attributes = [])
     {
         return new PurchaseInvoiceDetail($this->connection, $attributes);
+    }
+
+    /**
+     * @param array $attributes
+     * @return PurchaseInvoicePayment
+     */
+    public function purchaseInvoicePayment($attributes = [])
+    {
+        return new PurchaseInvoicePayment($this->connection, $attributes);
     }
 
     /**
